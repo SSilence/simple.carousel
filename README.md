@@ -41,14 +41,14 @@ jQuery(document).ready(function() {
 
 This will change following html structure
 
-<code>
+<pre>
 	&lt;ul id="carousel"&gt;
 	 &lt;li&gt;first frame (e.g. an image)&lt;/li&gt;
 	 &lt;li&gt;second frame (e.g. an image)&lt;/li&gt;
 	 &lt;li&gt;third frame (e.g. an image)&lt;/li&gt;
 	 ...
 	&lt;/ul&gt;
-</code>
+</pre>
 
 into a slider
 
