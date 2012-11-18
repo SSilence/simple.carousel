@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <title>slider test</title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="language" content="en" />
+    <meta name="robots" content="all" />
+    
+    <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="simple.carousel.js"></script>
+    
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            // example 1
+            $("ul.example1").simplecarousel({
+                width:40,
+                height:40,
+                visible: 3,
+                auto: 3000,
+                next: $('.next'),
+                prev: $('.prev')
+            });
+            
+            // example 2
+            $("ul.example2").simplecarousel({
+                width:700,
+                height:400,
+                auto: 4000,
+                fade: 400,
+                pagination: true
+            });
+        });
+        
+    </script>
+    
+    <style>
+        .example1 {
+            margin:0;
+            padding:0;
+            list-style:none;
+        }
+        
+        li {
+            text-align:center;
+        }
+        
+        li span {
+            display:block;
+            margin:5px;
+            background:red;
+        }
+        
+        .next,
+        .prev {
+            cursor:pointer;
+        }
+        
+        .example2 {
+            margin:0;
+            padding:0;
+            list-style:none;
+            width:697px;
+            height:400px;
+            overflow:hidden;
+        }
+        
+        .example2 li {
+            text-align:left;
+            display:block;
+            width:697px;
+            height:400px;
+        }
+        
+        .carousel-pagination li {
+            display:block;
+            width:10px;
+            height:10px;
+            margin-right:5px;
+            cursor:pointer;
+            float:left;
+            background:#333;
+        }
+        
+        .carousel-pagination .carousel-pagination-active {
+            background:#ff0000;
+        }
+    </style>
+    
+</head>
+<body>
+    <h1>Example 1</h1>
+    <ul class="example1">
+        <li><span>1</span></li>
+        <li><span>2</span></li>
+        <li><span>3</span></li>
+        <li><span>4</span></li>
+        <li><span>5</span></li>
+        <li><span>6</span></li>
+        <li><span>7</span></li>
+        <li><span>8</span></li>
+        <li><span>9</span></li>
+        <li><span>10</span></li>
+        <li><span>11</span></li>
+    </ul>
+
+    <span class="prev">prev</span>
+    <span class="next">next</span>
+
+    <h1>Example 2</h1>
+    <ul class="example2">
+        <li><img src="http://www.aditu.de/photos/life_is_gone_by_Tobias_Zeising.jpg" alt="life is gone by Tobias Zeising" /></li>
+        <li><img src="http://www.aditu.de/photos/infinite_by_Tobias_Zeising.jpg" alt="infinite by Tobias Zeising" /></li>
+        <li><img src="http://www.aditu.de/photos/far_away_by_Tobias_Zeising.jpg" alt="far away by Tobias Zeising" /></li>
+        <li><img src="http://www.aditu.de/photos/venetian_alley_by_Tobias_Zeising.jpg" alt="venetian alley by Tobias Zeising" /></li>
+        <li><img src="http://www.aditu.de/photos/neural_rust_by_Tobias_Zeising.jpg" alt="neural rust by Tobias Zeising" /></li>
+        <li><img src="http://www.aditu.de/photos/a_day_without_rain_by_Tobias_Zeising.jpg" alt="a day without rain by Tobias Zeising" /></li>
+        <li><img src="http://www.aditu.de/photos/classical_drop_by_Tobias_Zeising.jpg" alt="classical drop by Tobias Zeising" /></li>
+        <li><img src="http://www.aditu.de/photos/loneliness_by_Tobias_Zeising.jpg" alt="loneliness by Tobias Zeising" /></li>
+        <li><img src="http://www.aditu.de/photos/rays_of_reflection_by_Tobias_Zeising.jpg" alt="rays of reflection by Tobias Zeising" /></li>
+        <li><img src="http://www.aditu.de/photos/autumn_sun_by_Tobias_Zeising.jpg" alt="autumn sun by Tobias Zeising" /></li>
+        <li><img src="http://www.aditu.de/photos/elves_winter_by_Tobias_Zeising.jpg" alt="elves winter by Tobias Zeising" /></li>
+    </ul>
+</body>
+</html>
