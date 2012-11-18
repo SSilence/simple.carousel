@@ -11,9 +11,9 @@ This is a simple jQuery plugin for creating sliding carousels.
 Demo/Examples
 -------------
 
-[simple demo](http://public.aditu.de/simple.carousel/example.html)
-[aditu.de (image will change using a fade in/fade out effect)](http://www.aditu.de/)
-[rsslounge (presentation of the features by an slideshow)](http://rsslounge.aditu.de/)
+[simple demo](http://public.aditu.de/simple.carousel/example.html)<br />
+[aditu.de (image will change using a fade in/fade out effect)](http://www.aditu.de/)<br />
+[rsslounge (presentation of the features by an slideshow)](http://rsslounge.aditu.de/)<br />
 
 
 Usage
@@ -21,33 +21,33 @@ Usage
 
 Insert following in the head part of your html page:
 
-<code>
-	<script type="text/javascript" src="javascript/jquery-1.8.3.min.js"></script> 
-	<script type="text/javascript" src="javascript/simple.carousel.0.3.js"></script> 
-	<script type="text/javascript"> 
-	jQuery(document).ready(function() {
-		// initialize carousel
-		$("#carousel").simplecarousel({
-			next: $('.next'),
-			prev: $('.prev'),
-			slidespeed: 700,
-			auto: 5000,
-			width: 480,
-			height: 280
-		});
+<pre>
+&lt;script type="text/javascript" src="javascript/jquery-1.8.3.min.js"&gt;&lt;/script&gt; 
+&lt;script type="text/javascript" src="javascript/simple.carousel.0.3.js"&gt;&lt;/script&gt; 
+&lt;script type="text/javascript"&gt; 
+jQuery(document).ready(function() {
+	// initialize carousel
+	$("#carousel").simplecarousel({
+		next: $('.next'),
+		prev: $('.prev'),
+		slidespeed: 700,
+		auto: 5000,
+		width: 480,
+		height: 280
 	});
-	</script> 
-</code>
+});
+&lt;/script&gt; 
+</pre>
 
 This will change following html structure
 
 <code>
-	<ul id="carousel">
-	 <li>first frame (e.g. an image)</li>
-	 <li>second frame (e.g. an image)</li>
-	 <li>third frame (e.g. an image)</li>
+	&lt;ul id="carousel"&gt;
+	 &lt;li&gt;first frame (e.g. an image)&lt;/li&gt;
+	 &lt;li&gt;second frame (e.g. an image)&lt;/li&gt;
+	 &lt;li&gt;third frame (e.g. an image)&lt;/li&gt;
 	 ...
-	</ul>
+	&lt;/ul&gt;
 </code>
 
 into a slider
@@ -96,13 +96,13 @@ Parameters
 Example
 -------
 
-<code>
+<pre>
 $("#carousel").simplecarousel({
     next: $('.next'),
     prev: $('.prev'),
     auto: 4000,
     fade: 400
 });
-</code>
+</pre>
 
 Will create a carousel with fadein/fadeout effect. The pause between two frames will be 4 seconds, the speed of the fade effect will be 400 ms, the element with the class 'next' will be the next button (the same with 'prev' for back button). See download for further examples.
