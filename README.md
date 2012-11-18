@@ -52,6 +52,8 @@ This will change following html structure
 
 into a slider
 
+![simple carousel slider](http://public.aditu.de/simple.carousel_google_code.jpg)
+
 
 Parameters
 ----------
