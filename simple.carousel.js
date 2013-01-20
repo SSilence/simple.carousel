@@ -4,7 +4,7 @@
  * Licensed under the MIT license
  * 
  * http://code.google.com/p/simple-carousel/
- * Version 0.3
+ * Version 0.4
  */
 (function($){
 $.fn.simplecarousel = function( params ) {
@@ -17,13 +17,15 @@ $.fn.simplecarousel = function( params ) {
         vertical: false,
         auto: false,
         fade: false,
-        current: 0,
+        slideitems: 1,
+        
         items: 0,
         slidespeed: 600,
         visible: 1,
         pagination: false
     };
     var config = $.extend(defaults, params);
+    
     
     // configure carousel ul and li
     var ul = $(this);
@@ -40,6 +42,8 @@ $.fn.simplecarousel = function( params ) {
             width = width*config.visible;
     }
     
+    
+    // generate frame for the carousel
     ul.wrap('<div class="carousel-frame" style="width:'+width+'px;height:'+height+'px;overflow:hidden">');
     var container = ul.parent('.carousel-frame');
     if(!config.vertical) {
@@ -50,6 +54,7 @@ $.fn.simplecarousel = function( params ) {
         ul.height(config.items*config.height);
     }
     ul.css('overflow','hidden');
+    ul.css('list-style', 'none');
     
     li.each(function(i,item) {
         $(item).width(config.width);
@@ -58,44 +63,66 @@ $.fn.simplecarousel = function( params ) {
             $(item).css('float','left');
     });
     
+    
     // function for sliding the carousel
     var slide = function(dir, click) {
         if(typeof click == "undefined" & config.auto==false)
             return;
     
-        if(dir=="next") {
-            config.current += config.visible;
-            if(config.current>=config.items)
-                config.current = 0;
-        } else if(dir=="prev") {
-            config.current -= config.visible;
-            if(config.current<0)
-                config.current = (config.visible==1) ? config.items-1 : config.items-config.visible+(config.visible-(config.items%config.visible));
-        } else {
-            config.current = dir;
+        // parse int given delta
+        slideitems = config.slideitems;
+        if((parseFloat(dir) == parseInt(dir)) && !isNaN(dir)) {
+            slideitems = Math.abs(dir);
+            dir = (dir<0 ? "prev" : "next");
         }
+    
+        // vertical or horizontal
+        var css = new Object;
+        var cssMargin = config.vertical ? "marginTop" : "marginLeft";
+        css[cssMargin] = -1.0*slideitems*config.width;
         
-        // set pagination
-        if(config.pagination != false) {
-            container.next('.carousel-pagination').find('li').removeClass('carousel-pagination-active')
-            container.next('.carousel-pagination').find('li:nth-child('+(config.current+1)+')').addClass('carousel-pagination-active');
-        }
+        // prev
+        if(dir=="prev") {
+            for(var i=0;i<slideitems;i++)
+                ul.prepend(ul.find("li:last"));
+            ul.css(cssMargin, -1.0*slideitems*config.width);
+            css[cssMargin] = 0;
+        } 
+        
+        // function for reorder after next
+        var reorganizeAfterNext = function() {
+            if(dir!="prev") {
+                for(var i=0;i<slideitems;i++)
+                    ul.append(ul.find('li:first'));
+            }
+            ul.css(cssMargin, 0);
+        };
         
         // fade
         if(config.fade!=false) {
             ul.fadeOut(config.fade, function() {
-                ul.css({marginLeft: -1.0*config.current*config.width});
-                ul.fadeIn(config.fade);
+                ul.css(css);
+                ul.fadeIn(config.fade, reorganizeAfterNext);
             });
             
         // slide
         } else {
-            if(!config.vertical)
-                ul.animate( {marginLeft: -1.0*config.current*config.width}, config.slidespeed );
-            else
-                ul.animate( {marginTop: -1.0*config.current*config.height}, config.slidespeed );
+            ul.animate(css, config.slidespeed, 'swing', reorganizeAfterNext);
         }
         
+        // set pagination
+        if(config.pagination != false) {
+            var pagination = container.next('.carousel-pagination');
+            var current = pagination.find('li.carousel-pagination-active').removeClass('carousel-pagination-active');
+            var index = pagination.find('li').index(current) + 1;
+            index = (dir=="prev" ? index - slideitems : index + slideitems);
+            if(index<=0)
+                index = config.items + index;
+            if(index>config.items)
+                index = index - config.items;
+            pagination.find('li:nth-child('+index+')').addClass('carousel-pagination-active');
+        }
+     
         if(typeof click != "undefined")
             config.auto = false;
         
@@ -104,6 +131,7 @@ $.fn.simplecarousel = function( params ) {
                 slide('next');
             }, config.auto);
     }
+    
     
     // include pagination
     if(config.pagination != false) {
@@ -118,11 +146,15 @@ $.fn.simplecarousel = function( params ) {
         
         pagination.find('li').each(function(index, item) {
             $(this).click(function() {
-                slide(index,true);
-            });
+                // get delta (for backward or forward sliding
+                var current = pagination.find('li.carousel-pagination-active');
+                var delta = index - pagination.find('li').index(current);
+                slide(delta,true);
+             });
         });
     }
-        
+    
+    
     // set event handler for next and prev
     if(config.next!=false)
         config.next.click(function() {

@@ -16,10 +16,11 @@
             $("ul.example1").simplecarousel({
                 width:40,
                 height:40,
-                visible: 3,
+                visible: 5,
                 auto: 3000,
                 next: $('.next'),
-                prev: $('.prev')
+                prev: $('.prev'),
+                slideitems: 2
             });
             
             // example 2
@@ -28,7 +29,9 @@
                 height:400,
                 auto: 4000,
                 fade: 400,
-                pagination: true
+                pagination: true,
+                next: $('.next2'),
+                prev: $('.prev2')
             });
         });
         
@@ -121,5 +124,8 @@
         <li><img src="http://www.aditu.de/photos/autumn_sun_by_Tobias_Zeising.jpg" alt="autumn sun by Tobias Zeising" /></li>
         <li><img src="http://www.aditu.de/photos/elves_winter_by_Tobias_Zeising.jpg" alt="elves winter by Tobias Zeising" /></li>
     </ul>
+    
+    <span class="prev2">prev</span>
+    <span class="next2">next</span>
 </body>
 </html>
