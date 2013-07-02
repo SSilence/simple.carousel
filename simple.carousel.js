@@ -21,7 +21,10 @@ $.fn.simplecarousel = function( params ) {
         items: 0,
         slidespeed: 600,
         visible: 1,
-        pagination: false
+        pagination: false,
+        paginationItem: function( index ) {
+            return '';
+        }
     };
     var config = $.extend(defaults, params);
     
@@ -111,9 +114,9 @@ $.fn.simplecarousel = function( params ) {
         var pagination = container.next('.carousel-pagination');
         for(var i=0;i<config.items;i++) {
             if(i==0)
-                pagination.append('<li class="carousel-pagination-active"></li>');
+                pagination.append('<li class="carousel-pagination-active">' + config.paginationItem(i + 1) + '</li>');
             else
-                pagination.append('<li></li>');
+                pagination.append('<li>' + config.paginationItem(i + 1) + '</li>');
         }
         
         pagination.find('li').each(function(index, item) {
