@@ -24,13 +24,20 @@ $.fn.simplecarousel = function( params ) {
         pagination: false,
         paginationItem: function( index ) {
             return '';
-        }
+        },
+        pauseOnClick: false
     };
     var config = $.extend(defaults, params);
     
     // configure carousel ul and li
     var ul = $(this);
     var li = ul.children('li');
+    
+    if(config.pauseOnClick) {
+        li.bind('click', function () {
+            config.auto = false;
+        });
+    }
     
     config.items = li.length;
     
@@ -118,7 +125,7 @@ $.fn.simplecarousel = function( params ) {
             else
                 pagination.append('<li>' + config.paginationItem(i + 1) + '</li>');
         }
-        
+
         pagination.find('li').each(function(index, item) {
             $(this).click(function() {
                 slide(index,true);
