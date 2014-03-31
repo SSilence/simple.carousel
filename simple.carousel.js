@@ -67,7 +67,7 @@ $.fn.simplecarousel = function( params ) {
             config.current += config.visible;
             if(config.current>=config.items)
                 config.current = 0;
-        } else if(dir=="prev") {
+        } else if(dir=="prev" && config.items>config.visible) {
             config.current -= config.visible;
             if(config.current<0)
                 config.current = (config.visible==1) ? config.items-1 : config.items-config.visible+(config.visible-(config.items%config.visible));
