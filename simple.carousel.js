@@ -60,6 +60,7 @@ $.fn.simplecarousel = function( params ) {
     
     // function for sliding the carousel
     var slide = function(dir, click) {
+        
         if(typeof click == "undefined" & config.auto==false)
             return;
     
@@ -67,10 +68,13 @@ $.fn.simplecarousel = function( params ) {
             config.current += config.visible;
             if(config.current>=config.items)
                 config.current = 0;
-        } else if(dir=="prev" && config.items>config.visible) {
+        } else if(dir=="prev") {
             config.current -= config.visible;
             if(config.current<0)
                 config.current = (config.visible==1) ? config.items-1 : config.items-config.visible+(config.visible-(config.items%config.visible));
+                if(config.current == config.items){
+                    config.current = config.items-config.visible;
+                }
         } else {
             config.current = dir;
         }
@@ -79,6 +83,7 @@ $.fn.simplecarousel = function( params ) {
         if(config.pagination != false) {
             container.next('.carousel-pagination').find('li').removeClass('carousel-pagination-active')
             container.next('.carousel-pagination').find('li:nth-child('+(config.current+1)+')').addClass('carousel-pagination-active');
+            
         }
         
         // fade
