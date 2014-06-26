@@ -63,7 +63,7 @@ Parameters
     <th>parameter</th><th>type</th><th>outcome</th>
   </tr>
   <tr>
-    <td>wdith</td><td>int</td><td>width of the single frames</td>
+    <td>width</td><td>int</td><td>width of the single frames</td>
   </tr>
   <tr>
     <td>height</td><td>int</td><td>height of the frames</td>
@@ -91,6 +91,12 @@ Parameters
   </tr>
   <tr>
     <td>pagination</td><td>int</td><td>set true for this value and a pagination element will be included</td>
+  </tr>
+  <tr>
+    <td>pauseOnclick</td><td>int</td><td>A boolean that when true pauses the automatic sliding when user clicks in the current visible content. The default value is false.</td>
+  </tr>
+  <tr>
+    <td>paginationItem</td><td>int</td><td>A function which takes the item index as paramter and returns a string which will fill the button element. The default value is function( i ) { return ''; }</td>
   </tr>
 </table>
 
