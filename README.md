@@ -1,8 +1,8 @@
 simple.carousel
 ===============
 
-Copyright (c) 2012 Tobias Zeising, http://www.aditu.de
-Licensed under the MIT license
+Copyright (c) 2012 Tobias Zeising, http://www.aditu.de<br />
+Licensed under the MIT license<br />
 Version 0.3
 
 This is a simple jQuery plugin for creating sliding carousels.
