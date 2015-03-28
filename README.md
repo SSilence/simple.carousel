@@ -1,7 +1,7 @@
 simple.carousel
 ===============
 
-Copyright (c) 2012 Tobias Zeising, http://www.aditu.de<br />
+Copyright (c) 2015 Tobias Zeising, http://www.aditu.de<br />
 Licensed under the MIT license<br />
 Version 0.3
 
